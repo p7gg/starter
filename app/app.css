@@ -1,15 +1,60 @@
 @import "tailwindcss";
+@plugin "tailwindcss-animate";
+
+@custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));
 
 @theme {
-  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif,
-    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+	--font-sans: "Inter", ui-sans-serif, system-ui, sans-serif,
+		"Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+
+	--color-background: light-dark(hsl(0 0% 100%), hsl(240 10% 3.9%));
+	--color-foreground: light-dark(hsl(240 10% 3.9%), hsl(0 0% 98%));
+	--color-card: light-dark(hsl(0 0% 100%), hsl(240 10% 3.9%));
+	--color-card-foreground: light-dark(hsl(240 10% 3.9%), hsl(0 0% 98%));
+	--color-popover: light-dark(hsl(0 0% 100%), hsl(240 10% 3.9%));
+	--color-popover-foreground: light-dark(hsl(240 10% 3.9%), hsl(0 0% 98%));
+	--color-primary: light-dark(hsl(240 5.9% 10%), hsl(0 0% 98%));
+	--color-primary-foreground: light-dark(hsl(0 0% 98%), hsl(240 5.9% 10%));
+	--color-secondary: light-dark(hsl(240 4.8% 95.9%), hsl(240 3.7% 15.9%));
+	--color-secondary-foreground: light-dark(hsl(240 5.9% 10%), hsl(0 0% 98%));
+	--color-muted: light-dark(hsl(240 4.8% 95.9%), hsl(240 3.7% 15.9%));
+	--color-muted-foreground: light-dark(hsl(240 3.8% 46.1%), hsl(240 5% 64.9%));
+	--color-accent: light-dark(hsl(240 4.8% 95.9%), hsl(240 3.7% 15.9%));
+	--color-accent-foreground: light-dark(hsl(240 5.9% 10%), hsl(0 0% 98%));
+	--color-destructive: light-dark(hsl(0 84.2% 60.2%), hsl(0 62.8% 30.6%));
+	--color-destructive-foreground: light-dark(hsl(0 0% 98%), hsl(0 0% 98%));
+	--color-border: light-dark(hsl(240 5.9% 90%), hsl(240 3.7% 15.9%));
+	--color-input: light-dark(hsl(240 5.9% 90%), hsl(240 3.7% 15.9%));
+	--color-ring: light-dark(hsl(240 5.9% 10%), hsl(240 4.9% 83.9%));
+	--color-chart-1: light-dark(hsl(12 76% 61%), hsl(220 70% 50%));
+	--color-chart-2: light-dark(hsl(173 58% 39%), hsl(160 60% 45%));
+	--color-chart-3: light-dark(hsl(197 37% 24%), hsl(30 80% 55%));
+	--color-chart-4: light-dark(hsl(43 74% 66%), hsl(280 65% 60%));
+	--color-chart-5: light-dark(hsl(27 87% 67%), hsl(340 75% 55%));
+
+	--radius-lg: var(--radius);
+	--radius-md: calc(var(--radius) - 2px);
+	--radius-sm: calc(var(--radius) - 4px);
 }
 
-html,
-body {
-  @apply bg-white dark:bg-gray-950;
+@layer base {
+	:root {
+		--radius: 0.5rem;
+		color-scheme: light dark;
+	}
 
-  @media (prefers-color-scheme: dark) {
-    color-scheme: dark;
-  }
+	:root[data-theme="light"] {
+		color-scheme: light;
+	}
+
+	:root[data-theme="dark"] {
+		color-scheme: dark;
+	}
+
+	* {
+		@apply border-border;
+	}
+	body {
+		@apply font-sans antialiased bg-background text-foreground;
+	}
 }

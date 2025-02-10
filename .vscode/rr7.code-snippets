@@ -1,0 +1,102 @@
+{
+	"loader": {
+		"prefix": "/loader",
+		"scope": "typescriptreact,typescript",
+		"body": [
+			"import { type Route } from \"./+types/${TM_FILENAME_BASE}\"",
+			"",
+			"export async function loader({ request }: Route.LoaderArgs) {",
+			" return {}",
+			"}"
+		]
+	},
+	"clientLoader": {
+		"prefix": "/clientLoader",
+		"scope": "typescriptreact,typescript",
+		"body": [
+			"import { type Route } from \"./+types/${TM_FILENAME_BASE}\"",
+			"",
+			"export async function clientLoader({ request }: Route.ClientLoaderArgs) {",
+			" return {}",
+			"}"
+		]
+	},
+	"action": {
+		"prefix": "/action",
+		"scope": "typescriptreact,typescript",
+		"body": [
+			"import { type Route } from \"./+types/${TM_FILENAME_BASE}\"",
+			"",
+			"export async function action({ request }: Route.ActionArgs) {",
+			" return {}",
+			"}"
+		]
+	},
+	"clientAction": {
+		"prefix": "/clientAction",
+		"scope": "typescriptreact,typescript",
+		"body": [
+			"import { type Route } from \"./+types/${TM_FILENAME_BASE}\"",
+			"",
+			"export async function clientAction({ request }: Route.ClientActionArgs) {",
+			" return {}",
+			"}"
+		]
+	},
+	"default": {
+		"prefix": "/default",
+		"scope": "typescriptreact,typescript",
+		"body": [
+			"export default function ${TM_FILENAME_BASE/[^a-zA-Z0-9]*([a-zA-Z0-9])([a-zA-Z0-9]*)/${1:/capitalize}${2}/g}() {",
+			" return (",
+			"  <div>",
+			"    <h1>Unknown Route</h1>",
+			"  </div>",
+			" )",
+			"}"
+		]
+	},
+	"headers": {
+		"prefix": "/headers",
+		"scope": "typescriptreact,typescript",
+		"body": [
+			"import { type Route } from \"./+types/${TM_FILENAME_BASE}\"",
+			"export const headers: Route.HeadersFunction = ({ loaderHeaders }) => ({",
+			" 'Cache-Control': loaderHeaders.get('Cache-Control') ?? '',",
+			"})"
+		]
+	},
+	"links": {
+		"prefix": "/links",
+		"scope": "typescriptreact,typescript",
+		"body": [
+			"import { type Route } from \"./+types/${TM_FILENAME_BASE}\"",
+			"",
+			"export const links: Route.LinksFunction = () => {",
+			" return []",
+			"}"
+		]
+	},
+	"meta": {
+		"prefix": "/meta",
+		"scope": "typescriptreact,typescript",
+		"body": [
+			"import { type Route } from \"./+types/${TM_FILENAME_BASE}\"",
+			"",
+			"export const meta: Route.MetaFunction = ({ data }) => [{",
+			" title: 'Title',",
+			"}]"
+		]
+	},
+	"shouldRevalidate": {
+		"prefix": "/shouldRevalidate",
+		"scope": "typescriptreact,typescript",
+		"body": [
+			"import { type ShouldRevalidateFunctionArgs } from 'react-router'",
+			"",
+			"export function shouldRevalidate({ defaultShouldRevalidate }: ShouldRevalidateFunctionArgs) {",
+			" return defaultShouldRevalidate",
+			"}"
+		]
+	}
+}

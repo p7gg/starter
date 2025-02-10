@@ -1,0 +1,47 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"label": "Start Development Environment",
+			"dependsOrder": "parallel",
+			"dependsOn": ["dev:ui", "dev:db", "dev:zero"],
+			"group": {
+				"kind": "build",
+				"isDefault": true
+			}
+		},
+		{
+			"label": "dev:ui",
+			"type": "shell",
+			"command": "pnpm run dev:ui",
+			"presentation": {
+				"reveal": "always",
+				"panel": "new",
+				"group": "devServer"
+			},
+			"problemMatcher": []
+		},
+		{
+			"label": "dev:db",
+			"type": "shell",
+			"command": "pnpm run dev:db-up",
+			"presentation": {
+				"reveal": "always",
+				"panel": "new",
+				"group": "devServer"
+			},
+			"problemMatcher": []
+		},
+		{
+			"label": "dev:zero",
+			"type": "shell",
+			"command": "pnpm run dev:zero",
+			"presentation": {
+				"reveal": "always",
+				"panel": "new",
+				"group": "devServer"
+			},
+			"problemMatcher": []
+		}
+	]
+}
